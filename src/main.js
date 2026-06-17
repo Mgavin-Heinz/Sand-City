@@ -130,3 +130,28 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     document.querySelector('.nav-links').classList.remove('open');
   });
 });
+
+// ─── MOBILE PRODUCTS COLLAPSE ────────────────────────────────────
+function initProductCollapse() {
+  if (window.innerWidth > 900) return;
+
+  const grid = document.querySelector('.products-grid');
+  const cards = [...document.querySelectorAll('.product-card')];
+  if (!grid || cards.length <= 4) return;
+
+  // Hide cards after the first 4
+  cards.slice(4).forEach(card => card.style.display = 'none');
+
+  // Create show more button
+  const btn = document.createElement('button');
+  btn.textContent = 'Show all products';
+  btn.className = 'show-more-btn';
+  btn.addEventListener('click', () => {
+    cards.slice(4).forEach(card => card.style.display = 'block');
+    btn.style.display = 'none';
+  });
+
+  grid.after(btn);
+}
+
+initProductCollapse();
