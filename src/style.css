@@ -792,6 +792,10 @@ footer {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
+.nav-toggle {
+  display: none;
+}
+
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
@@ -803,4 +807,24 @@ footer {
   .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
   .form-row { grid-template-columns: 1fr; }
   .nav-links { display: none; }
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--sand-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .nav-links.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(46, 13, 6, 0.98);
+  padding: 1.5rem 5%;
+  gap: 1.25rem;
+  border-bottom: 2px solid var(--sand-gold);
+}
 }
