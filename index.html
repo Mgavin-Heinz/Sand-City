@@ -44,8 +44,8 @@
         </h1>
         <p class="hero-sub">
           Sand City supplies premium sand, stone, cement and bricks to
-          contractors and homeowners across Bloemfontein —
-          reliably, affordably, and on time.
+          contractors and homeowners across Bloemfontein — reliably, affordably,
+          and on time.
         </p>
         <div class="hero-buttons">
           <a href="#order-form" class="btn-primary">Order via WhatsApp</a>
@@ -407,7 +407,72 @@
 
         <div class="contact-form reveal" id="order-form">
           <div id="form-wrap">
-            <div class="form-title">Order via WhatsApp</div>
+            <div class="form-title">Build your order</div>
+
+            <!-- STEP 1: Item builder -->
+            <div class="builder">
+              <div class="form-group">
+                <label for="f-product">Product</label>
+                <select id="f-product">
+                  <option value="">— Select a product —</option>
+                  <option>Plaster Sand</option>
+                  <option>Building Sand</option>
+                  <option>Gravel (Sifted)</option>
+                  <option>Gravel (Unsifted)</option>
+                  <option>Topsoil</option>
+                  <option>Crusher Dust</option>
+                  <option>Concrete Stone 13mm</option>
+                  <option>Concrete Stone 19mm</option>
+                  <option>Builders Blend</option>
+                  <option>Bricks / Cement</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-volume">Volume</label>
+                  <select id="f-volume">
+                    <option value="">— Volume —</option>
+                    <option>½ m³</option>
+                    <option>1 m³</option>
+                    <option>2 m³</option>
+                    <option>3 m³</option>
+                    <option>4 m³</option>
+                    <option>5 m³</option>
+                    <option>6 m³</option>
+                    <option>10 m³</option>
+                    <option>12 m³</option>
+                    <option>Other / ask</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="f-delivery">Delivery / Collect</label>
+                  <select id="f-delivery">
+                    <option value="">— Select —</option>
+                    <option>Delivery</option>
+                    <option>Self Collect</option>
+                  </select>
+                </div>
+              </div>
+              <button type="button" class="add-item-btn" onclick="addItem()">
+                ＋ Add item to order
+              </button>
+            </div>
+
+            <!-- STEP 2: The order list (filled by JS) -->
+            <div class="order-list" id="order-list">
+              <p class="order-empty" id="order-empty">
+                No items added yet. Build your order above.
+              </p>
+            </div>
+
+            <!-- STEP 3: Estimated total -->
+            <div class="order-total" id="order-total" style="display: none">
+              <span>Estimated total*</span>
+              <strong id="total-amount">R 0</strong>
+            </div>
+
+            <!-- STEP 4: Your details -->
+            <div class="details-divider">Your details</div>
             <div class="form-row">
               <div class="form-group">
                 <label for="f-name">Your name *</label>
@@ -420,49 +485,6 @@
                   id="f-phone"
                   placeholder="e.g. 073 XXX XXXX"
                 />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="f-product">Product *</label>
-              <select id="f-product">
-                <option value="">— Select a product —</option>
-                <option>Plaster Sand</option>
-                <option>Building Sand</option>
-                <option>Gravel (Sifted)</option>
-                <option>Gravel (Unsifted)</option>
-                <option>Topsoil</option>
-                <option>Crusher Dust</option>
-                <option>Concrete Stone 13mm</option>
-                <option>Concrete Stone 19mm</option>
-                <option>Builders Blend</option>
-                <option>Bricks / Cement</option>
-                <option>Multiple products</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="f-volume">Volume needed *</label>
-                <select id="f-volume">
-                  <option value="">— Select volume —</option>
-                  <option>½ m³</option>
-                  <option>1 m³</option>
-                  <option>2 m³</option>
-                  <option>3 m³</option>
-                  <option>4 m³</option>
-                  <option>5 m³</option>
-                  <option>6 m³</option>
-                  <option>10 m³</option>
-                  <option>12 m³</option>
-                  <option>Not sure</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="f-delivery">Delivery or collect? *</label>
-                <select id="f-delivery">
-                  <option value="">— Select —</option>
-                  <option>Delivery</option>
-                  <option>Self Collect</option>
-                </select>
               </div>
             </div>
             <div class="form-group">
@@ -480,6 +502,7 @@
                 placeholder="e.g. Need delivery before 9am, gate code is 1234..."
               ></textarea>
             </div>
+
             <button
               class="form-submit"
               id="whatsapp-btn"
@@ -488,8 +511,9 @@
               <span>📲 Send Order on WhatsApp</span>
             </button>
             <p class="form-note">
-              This will open WhatsApp with your order pre-filled. We'll confirm
-              your order and arrange the rest.
+              *Estimated total is a guide only and will be confirmed by us.
+              Prices for some items (bricks, cement, custom volumes) are quoted
+              on request. This opens WhatsApp with your full order pre-filled.
             </p>
           </div>
         </div>

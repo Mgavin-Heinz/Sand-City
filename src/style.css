@@ -751,6 +751,136 @@ section {
   line-height: 1.5;
 }
 
+/* ════════════════════════════════════════════════════════════════
+   ORDER BUILDER
+   Paste this into style.css. A good spot is right AFTER your
+   .form-note rule and BEFORE the /* FOOTER */ section.
+   ════════════════════════════════════════════════════════════════ */
+
+.builder {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed rgba(192, 0, 12, 0.2);
+  margin-bottom: 1.25rem;
+}
+
+.add-item-btn {
+  width: 100%;
+  background: var(--white);
+  color: var(--sand-deep);
+  border: 1.5px solid var(--sand-mid);
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.add-item-btn:hover {
+  background: var(--sand-mid);
+  color: var(--white);
+}
+
+/* The list of added items */
+.order-list {
+  margin-bottom: 1.25rem;
+}
+.order-empty {
+  font-size: 0.88rem;
+  color: var(--stone-light);
+  text-align: center;
+  padding: 1rem;
+  font-style: italic;
+}
+
+.order-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: var(--white);
+  border: 1px solid rgba(192, 0, 12, 0.1);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+.order-row-info {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.order-row-info strong {
+  display: block;
+  color: var(--sand-deep);
+  font-weight: 600;
+}
+.order-row-info span {
+  font-size: 0.8rem;
+  color: var(--stone-mid);
+}
+.order-row-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.order-row-price {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--stone);
+  white-space: nowrap;
+}
+.order-row-price.tbc {
+  color: var(--stone-light);
+  font-weight: 500;
+  font-style: italic;
+}
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--sand-mid);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.remove-btn:hover {
+  background: rgba(192, 0, 12, 0.1);
+}
+
+/* Estimated total bar */
+.order-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--sand-pale);
+  border: 1px solid rgba(192, 0, 12, 0.15);
+  border-radius: 6px;
+  padding: 0.85rem 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--stone-mid);
+}
+.order-total strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--sand-deep);
+}
+
+.details-divider {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sand-mid);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(192, 0, 12, 0.1);
+}
+
 /* ─── FOOTER ─── */
 footer {
   background: var(--sand-deep);
