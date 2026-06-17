@@ -751,11 +751,6 @@ section {
   line-height: 1.5;
 }
 
-/* ════════════════════════════════════════════════════════════════
-   ORDER BUILDER
-   Paste this into style.css. A good spot is right AFTER your
-   .form-note rule and BEFORE the /* FOOTER */ section.
-   ════════════════════════════════════════════════════════════════ */
 
 .builder {
   padding-bottom: 1.25rem;
