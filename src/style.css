@@ -99,7 +99,7 @@ nav {
   background: var(--sand-deep);
   background-image:
     linear-gradient(rgba(192, 0, 12, 0.82), rgba(155, 0, 9, 0.88)),
-    url(/public/Hero.jpg);
+    url(/Hero.jpg);
   background-size: cover;
   background-position: center;
   display: grid;

@@ -1,40 +1,61 @@
 import './style.css';
 
 // ─── PRICING DATA ───────────────────────────────────────────────
-// Each row: [product, 1m³, 2m³, 3m³, 4m³, 5m³, 6m³, 10m³, 12m³]
+// Prices valid from 1 May 2026. Source: Sand City flyer.
+//
+// DELIVERED: columns are 1m³, 2m³, 3m³, 4m³, 5m³, 6m³, 10m³, 12m³
+// SELF COLLECT: only ½m³ and 1m³ are available (no larger volumes)
+
 const prices = {
   delivered: [
-    ['Plaster Sand',        'R 440',  'R 800',  'R 1,150', 'R 1,600', 'R 2,220', 'R 2,560', 'R 3,800', 'R 4,420'],
-    ['Building Sand',       'R 400',  'R 800',  'R 1,150', 'R 1,750', 'R 1,900', 'R 2,000', 'R 2,800', 'R 3,270'],
-    ['Gravel (Sifted)',     'R 490',  'R 900',  'R 1,480', 'R 1,750', 'R 1,900', 'R 2,000', 'R 2,800', 'R 3,270'],
-    ['Gravel (Unsifted)',   'R 350',  'R 990',  'R 1,150', 'R 1,520', 'R 1,750', 'R 1,870', 'R 2,500', 'R 2,880'],
-    ['Topsoil',             'R 350',  'R 990',  'R 1,150', 'R 1,520', 'R 1,750', 'R 1,870', 'R 2,500', 'R 2,880'],
-    ['Crusher Dust',        'R 830',  'R 980',  'R 1,720', 'R 2,820', 'R 3,500', 'R 3,800', 'R 6,200', 'R 6,800'],
-    ['Concrete Stone 13mm', 'R 780',  'R 890',  'R 1,670', 'R 2,180', 'R 3,390', 'R 3,800', 'R 6,000', 'R 6,800'],
-    ['Concrete Stone 19mm', 'R 780',  'R 890',  'R 1,670', 'R 2,180', 'R 3,390', 'R 3,800', 'R 6,000', 'R 6,800'],
-    ['Builders Blend',      'R 780',  'R 890',  'R 1,670', 'R 2,180', 'R 3,390', 'R 3,800', 'R 6,000', 'R 6,800'],
+    //  Product                  1m³         2m³         3m³         4m³         5m³         6m³         10m³        12m³
+    ['Plaster Sand',        'R 800',    'R 1,150',  'R 1,600',  'R 1,840',  'R 2,220',  'R 2,560',  'R 3,800',  'R 4,420'],
+    ['Building Sand',       'R 660',    'R 1,100',  'R 1,480',  'R 1,750',  'R 1,900',  'R 2,000',  'R 2,800',  'R 3,270'],
+    ['Gravel (Sifted)',     'R 660',    'R 1,100',  'R 1,480',  'R 1,750',  'R 1,900',  'R 2,000',  'R 2,800',  'R 3,270'],
+    ['Gravel (Unsifted)',   'R 610',    'R 990',    'R 1,150',  'R 1,520',  'R 1,750',  'R 1,870',  'R 2,500',  'R 2,880'],
+    ['Topsoil',             'R 610',    'R 990',    'R 1,150',  'R 1,520',  'R 1,750',  'R 1,870',  'R 2,500',  'R 2,880'],
+    ['Crusher Dust',        'R 980',    'R 1,720',  'R 2,300',  'R 2,820',  'R 3,500',  'R 3,800',  'R 6,200',  'R 6,800'],
+    ['Concrete Stone 13mm', 'R 890',    'R 1,670',  'R 2,180',  'R 2,760',  'R 3,390',  'R 3,800',  'R 6,000',  'R 6,800'],
+    ['Concrete Stone 19mm', 'R 890',    'R 1,670',  'R 2,180',  'R 2,760',  'R 3,390',  'R 3,800',  'R 6,000',  'R 6,800'],
+    ['Builders Blend',      'R 890',    'R 1,670',  'R 2,180',  'R 2,760',  'R 3,390',  'R 3,800',  'R 6,000',  'R 6,800'],
   ],
   collect: [
-    ['Plaster Sand',        'R 270',  'R 480',  'R 660',   'R 840',   'R 1,050', 'R 1,250', 'R 2,000', 'R 2,400'],
-    ['Building Sand',       'R 260',  'R 480',  'R 660',   'R 840',   'R 1,050', 'R 1,250', 'R 2,000', 'R 2,400'],
-    ['Gravel (Sifted)',     'R 260',  'R 490',  'R 660',   'R 840',   'R 1,050', 'R 1,250', 'R 2,000', 'R 2,400'],
-    ['Gravel (Unsifted)',   'R 240',  'R 480',  'R 660',   'R 780',   'R 980',   'R 1,100', 'R 1,600', 'R 1,900'],
-    ['Topsoil',             'R 240',  'R 480',  'R 660',   'R 780',   'R 980',   'R 1,100', 'R 1,600', 'R 1,900'],
-    ['Crusher Dust',        'R 470',  'R 590',  'R 890',   'R 1,200', 'R 1,600', 'R 1,900', 'R 3,200', 'R 3,800'],
-    ['Concrete Stone 13mm', 'R 450',  'R 780',  'R 890',   'R 1,110', 'R 1,520', 'R 1,800', 'R 2,800', 'R 3,200'],
-    ['Concrete Stone 19mm', 'R 450',  'R 780',  'R 890',   'R 1,110', 'R 1,520', 'R 1,800', 'R 2,800', 'R 3,200'],
-    ['Builders Blend',      'R 450',  'R 780',  'R 890',   'R 1,110', 'R 1,520', 'R 1,800', 'R 2,800', 'R 3,200'],
+    //  Product                  ½m³         1m³
+    ['Plaster Sand',        'R 270',    'R 440'],
+    ['Building Sand',       'R 260',    'R 400'],
+    ['Gravel (Sifted)',     'R 260',    'R 400'],
+    ['Gravel (Unsifted)',   'R 240',    'R 350'],
+    ['Topsoil',             'R 240',    'R 350'],
+    ['Crusher Dust',        'R 470',    'R 830'],
+    ['Concrete Stone 13mm', 'R 450',    'R 780'],
+    ['Concrete Stone 19mm', 'R 450',    'R 780'],
+    ['Builders Blend',      'R 450',    'R 780'],
   ]
+};
+
+// Column headers per mode
+const headers = {
+  delivered: ['1m³', '2m³', '3m³', '4m³', '5m³', '6m³', '10m³', '12m³'],
+  collect:   ['½m³', '1m³'],
 };
 
 // ─── RENDER PRICING TABLE ────────────────────────────────────────
 function renderTable(type) {
+  // Update thead
+  const thead = document.querySelector('#price-table thead tr');
+  if (thead) {
+    thead.innerHTML =
+      '<th>Product</th>' +
+      headers[type].map(h => `<th>${h}</th>`).join('');
+  }
+
+  // Update tbody
   const tbody = document.getElementById('price-body');
   if (!tbody) return;
   tbody.innerHTML = prices[type]
     .map(row => `
       <tr>
-        ${row.map((cell, i) => i === 0 ? `<td>${cell}</td>` : `<td>${cell}</td>`).join('')}
+        ${row.map(cell => `<td>${cell}</td>`).join('')}
       </tr>
     `).join('');
 }
@@ -50,8 +71,7 @@ renderTable('delivered');
 
 
 // ─── WHATSAPP ORDER ──────────────────────────────────────────────
-// Sand City WhatsApp number (use 082 802 2147)
-const WHATSAPP_NUMBER = '27827273054';
+const WHATSAPP_NUMBER = '27828022147';
 
 window.sendWhatsApp = function() {
   const name     = document.getElementById('f-name').value.trim();
@@ -75,8 +95,8 @@ window.sendWhatsApp = function() {
     `📦 *Product:* ${product}`,
     `📐 *Volume:* ${volume}`,
     `🚚 *Delivery/Collect:* ${delivery}`,
-    address  ? `📍 *Address:* ${address}` : null,
-    notes    ? `📝 *Notes:* ${notes}` : null,
+    address ? `📍 *Address:* ${address}` : null,
+    notes   ? `📝 *Notes:* ${notes}`    : null,
   ]
   .filter(Boolean)
   .join('\n');
